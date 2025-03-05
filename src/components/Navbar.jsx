@@ -15,12 +15,22 @@ export const Navbar = ({ dark, handleTheme }) => {
             dark ? "darkHover" : "lightHover"
           } flex items-center mx-auto my-0`}
         >
-          <li className="p-4 cursor-pointer">
+          <li
+            className={`${
+              dark ? "hover:text-slate-900" : "hover:text-zinc-100"
+            } p-4 magic-hover magic-hover__square`}
+          >
             <a href="#home">Home</a>
           </li>
           <span>|</span>
-          <li className="p-4 cursor-pointer">
-            <a href="#projects">Projects</a>
+          <li
+            className={`${
+              dark ? "hover:text-slate-900" : "hover:text-zinc-100"
+            } p-4 magic-hover magic-hover__square`}
+          >
+            <a className="magic-hover magic-hover__square" href="#projects">
+              Projects
+            </a>
           </li>
         </ul>
         <button
@@ -28,7 +38,7 @@ export const Navbar = ({ dark, handleTheme }) => {
             dark
               ? "text-slate-900 bg-yellow-200"
               : "text-yellow-200 bg-slate-900"
-          } p-2 m-4 w-fit h-fit cursor-pointer 0 rounded-full absolute right-0`}
+          } p-2 m-4 w-fit h-fit 0 rounded-full absolute right-0`}
           onClick={handleTheme}
         >
           {dark ? <LuSun /> : <LuMoonStar />}

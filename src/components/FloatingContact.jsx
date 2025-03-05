@@ -4,7 +4,7 @@ import { LuArrowRight } from "react-icons/lu";
 const FloatingContact = () => {
   return (
     <button
-      className={`text-zinc-100 gap-2 m-4 flex hover:cursor-pointer items-center absolute bottom-0 left-0 p-2 bg-slate-700 rounded-full group backdrop-blur-3xl`}
+      className={`text-zinc-100 gap-2 m-4 flex items-center absolute bottom-0 left-0 p-2 bg-slate-700 rounded-full group backdrop-blur-3xl`}
     >
       <span className="hidden lg:flex">I'm available for work -</span>
       <i className="group-hover:text-yellow-100 transition-colors ease-in">

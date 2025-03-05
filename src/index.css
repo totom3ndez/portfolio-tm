@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
+html {
+  cursor: hidden;
+}
+
 #root {
   height: 100vh;
   font-family: "Parkinsans", sans-serif;
+  overflow: hidden;
 }
 
 *,
@@ -12,6 +17,10 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+}
+
+a {
+  cursor: none;
 }
 
 @keyframes fadeUp {
@@ -46,12 +55,6 @@ ul li a {
   opacity: 0;
   animation: fadeUp 2s forwards;
 }
-ul li a {
-  transition: all 0.4s ease;
-  position: relative;
-  opacity: 0;
-  animation: fadeUp 2s forwards;
-}
 
 ul li:nth-child(1) a {
   animation-delay: 0.2s;
@@ -66,11 +69,13 @@ ul li:nth-child(3) a {
 ul li a::after {
   content: "";
   display: block;
-  width: 0;
-  height: 2px;
+  width: 0%;
+  height: 100%;
+  top: 0;
   transition: width 0.4s;
   position: absolute;
   opacity: 1;
+  z-index: -1;
 }
 
 .darkHover a::after {
@@ -83,4 +88,62 @@ ul li a::after {
 
 ul li a:hover::after {
   width: 100%;
+}
+
+img {
+  opacity: 0;
+  animation-delay: 0.5s;
+  animation: fadeUp 3s forwards;
+}
+
+h1 {
+  position: relative;
+}
+
+h1 div {
+  display: inline-block;
+  transition: all 0.1s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+.name_word {
+  opacity: 0;
+  animation: fadeUp 2.5s forwards;
+}
+
+.name_word:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+h1 .bgHover:hover {
+  color: #0f172b;
+}
+
+h1 .bgHover::after {
+  top: 0;
+  content: "";
+  background-color: #fff085;
+  display: block;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+h1 .bgHover:hover::after {
+  width: 100%;
+}
+
+p {
+  opacity: 0;
+  animation: fadeUp 5s forwards;
+}
+
+.hover-transition {
+  animation: fadeUp 0.5s ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
