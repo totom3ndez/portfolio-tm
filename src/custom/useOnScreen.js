@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-export const useOnScreen = (ref, tresh) => {
+export const useOnScreen = (ref, tresh = 0.1) => {
+  // Default threshold to 0.1
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: tresh } // Adjust threshold as needed
-    );
+  const observer = useMemo(
+    () =>
+      new IntersectionObserver(
+        ([entry]) => setIsVisible(entry.isIntersecting),
+        { threshold: tresh }
+      ),
+    [tresh]
+  );
 
+  useEffect(() => {
     if (ref.current) {
       observer.observe(ref.current);
     }
@@ -21,7 +23,7 @@ export const useOnScreen = (ref, tresh) => {
         observer.unobserve(ref.current);
       }
     };
-  }, [ref, tresh]);
+  }, [ref, observer]);
 
   return isVisible;
 };

@@ -1,9 +1,9 @@
 @import "tailwindcss";
+
 #root {
   height: 100vh;
   font-family: "Parkinsans", sans-serif;
 }
-
 *,
 ** {
   margin: 0;
@@ -112,12 +112,11 @@ h1 .bgHover::after {
 h1 .bgHover:hover::after {
   width: 100%;
 }
-#hero_text {
+.hero_text {
   opacity: 0;
   animation: fadeUp 5s forwards;
   transition: all 0.3s ease;
 }
-
 .hover-transition {
   animation: fadeUp 0.5s ease-in-out;
   animation-iteration-count: infinite;
@@ -159,12 +158,10 @@ h1 .bgHover:hover::after {
     transform: translateX(calc(250px * 7));
   }
 }
-
 .text-shadow {
   text-shadow: 2px 5px 20px black;
 }
-
-#project_card::after {
+.project_card::after {
   position: absolute;
   content: "";
   width: 100%;
@@ -175,51 +172,48 @@ h1 .bgHover:hover::after {
   z-index: 1;
   transition: all 0.3s ease;
 }
-
-#project_card:hover::after {
-  opacity: 0.5;
+.project_card:hover::after {
+  opacity: 0.7;
 }
-#project_card:hover #project_description {
+.project_card:hover #project_description {
   display: flex;
   animation: fadeUp 1s ease;
 }
-#project_card:hover #project_skills {
+.project_card:hover #project_skills {
   display: flex;
   animation: fadeDown 1s ease;
 }
-#project_card:hover button {
+.project_card:hover button {
   display: flex;
   animation: fadeDown 1s ease;
 }
-
-#project_card:hover #project_skills span {
+.project_card:hover #project_skills span {
   opacity: 0;
 }
-
-#project_card:hover #project_name {
+.project_card:hover #project_name {
   opacity: 0;
   animation: fadeUp 1s ease forwards;
   animation-delay: 0.1s;
 }
-
 .hideFloat {
   visibility: hidden;
 }
-
 .showFloat {
   visibility: hidden;
 }
-#buttonContact.passed {
+.buttonContact {
+  animation: fadeUp 0.7s ease-in-out forwards;
+}
+
+.buttonContact.passed {
   opacity: 0;
   animation: fadeUp 1s ease-in-out forwards;
 }
-
-#buttonContact.exiting {
+.buttonContact.exiting {
   opacity: 1;
   animation: fadeDown 1s ease-in-out forwards;
 }
-
-#buttonContact:hover {
+.buttonContact:hover {
   transition: all 0.3s ease-in-out;
 }
 .animate {
@@ -227,16 +221,14 @@ h1 .bgHover:hover::after {
   animation: fadeUp 0.3s ease-in-out forwards;
   animation-delay: 300ms;
 }
-
-#project_container {
+.project_container {
   position: relative;
   z-index: 1;
 }
 
-#project_card {
+.project_card {
   z-index: 1;
 }
-
 .button_TM_primary {
   padding: 10px 16px;
   border: 1px solid grey;
@@ -245,8 +237,11 @@ h1 .bgHover:hover::after {
   color: #0f172b;
   transition: all 0.3s ease;
 }
-
 .button_TM_primary:hover {
   font-weight: 500;
   letter-spacing: 1px;
+}
+
+html {
+  scroll-behavior: smooth;
 }

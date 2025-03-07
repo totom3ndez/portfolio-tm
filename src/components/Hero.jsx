@@ -3,26 +3,31 @@ import ContactButton from "./ContactButton";
 
 export const Hero = ({ dark }) => {
   const text = `I am a dedicated student specializing in Web development. I possess a strong passion for creating visually appealing and user-centric web designs, transforming innovative concepts into functional and responsive digital interfaces. As I continue to enhance my skills and expertise, I am committed to contributing to the development of exceptional online experiences.`;
-
+  //  ---------------- STYLES ---------------- //
+  const st_hero_container = ` lg:grid lg:grid-rows-2 lg:items-center lg:justify-items-center lg:grid-cols-3 lg:max-w-7xl lg:gap-10 lg:py-30 flex flex-col justify-center items-center text-center px-4 h-[85vh] z-2`;
+  const st_img = `size-70 shadow-slate-600 shadow-2xl lg:size-80 mx-auto rounded-full transition-all ease-in`;
+  const st_title = `${
+    dark ? "text-white" : "text-slate-900"
+  } flex flex-col mt-4 lg:mt-0 justify-center items-center lg:items-baseline text-7xl font-bold lg:flex-col`;
+  const st_text = `${
+    dark ? "text-white" : "text-slate-900"
+  } text-sm lg:text-lg text-left mx-auto p-6 lg:p-0 flex flex-wrap cursor-default hero_text`;
+  const st_role = `${
+    dark ? "text-yellow-200" : "text-slate-900"
+  } flex gap-1.5 justify-center`;
+  //  ---------------- STYLES ---------------- //
   return (
     <>
-      <div
-        id="hero_container"
-        className=" lg:grid lg:grid-rows-2 lg:items-center lg:justify-items-center lg:grid-cols-3 lg:max-w-7xl lg:gap-10 lg:py-30 flex flex-col justify-center items-center text-center px-4 h-[85vh] z-2"
-      >
-        <div className="relative ">
+      <div className={`${st_hero_container} hero_container`}>
+        <div className="relative">
           <img
-            className="size-70 shadow-slate-600 shadow-2xl lg:size-80 mx-auto rounded-full transition-all ease-in"
+            className={st_img}
             src="/photo-profile.webp"
             alt="Profile image of Tomas Mendez"
           />
         </div>
         <div className="flex flex-col gap-2 name ">
-          <h1
-            className={`${
-              dark ? "text-white" : "text-slate-900"
-            } flex flex-col mt-4 lg:mt-0 justify-center items-center lg:items-baseline text-7xl font-bold lg:flex-col`}
-          >
+          <h1 className={st_title}>
             <div className="flex w-fit bgHover delay-400 name_word">
               <span>T</span>
               <span>o</span>
@@ -39,22 +44,13 @@ export const Hero = ({ dark }) => {
               <span>z</span>
             </div>
           </h1>
-          <div
-            className={`${
-              dark ? "text-yellow-200" : "text-slate-900"
-            } flex gap-1.5 justify-center`}
-          >
+          <div className={st_role}>
             <span className="position">Front</span>
             <span className="position">End</span>
             <span className="position">Developer</span>
           </div>
         </div>
-        <p
-          id="hero_text"
-          className={`${
-            dark ? "text-white" : "text-slate-900"
-          } text-sm lg:text-lg text-left mx-auto p-6 lg:p-0 flex flex-wrap cursor-default`}
-        >
+        <p className={st_text}>
           {text.split(" ").map((word, index) => (
             <span key={index} className="hover-effect">
               {word}&nbsp;
