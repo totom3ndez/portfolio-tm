@@ -1,36 +1,35 @@
 import React from "react";
-import { LuMoonStar, LuSun, LuArrowRight } from "react-icons/lu";
-import FloatingContact from "./FloatingContact";
+import { LuMoonStar, LuSun } from "react-icons/lu";
 
 export const Navbar = ({ dark, handleTheme }) => {
+  //  ---------------- STYLES ---------------- //
+  const linkStyle = [
+    "opacity-50 hover:opacity-100 transition-all ease-in duration-200",
+  ];
+  const listStyle = [
+    `${
+      dark ? "darkHover" : "lightHover"
+    } flex items-center mx-auto my-0 gap-5 px-4 py-2 backdrop-blur-3xl rounded-full border-1 border-zinc-600`,
+  ];
+
   return (
     <>
       <nav
         className={`${
           dark ? "text-zinc-100 " : "text-slate-900"
-        } m-2 flex w-full sticky top-0 z-10 items-center transition-bg ease-in-out duration-600`}
+        } p-4 flex w-full sticky top-0 z-100 items-center transition-bg ease-in-out`}
       >
-        <ul
-          className={`${
-            dark ? "darkHover" : "lightHover"
-          } flex items-center mx-auto my-0`}
-        >
-          <li
-            className={`${
-              dark ? "hover:text-slate-900" : "hover:text-zinc-100"
-            } p-4 magic-hover magic-hover__square`}
-          >
+        <ul className={listStyle}>
+          <li className={linkStyle}>
             <a href="#home">Home</a>
           </li>
           <span>|</span>
-          <li
-            className={`${
-              dark ? "hover:text-slate-900" : "hover:text-zinc-100"
-            } p-4 magic-hover magic-hover__square`}
-          >
-            <a className="magic-hover magic-hover__square" href="#projects">
-              Projects
-            </a>
+          <li className={linkStyle}>
+            <a href="#projects">Projects</a>
+          </li>
+          <span>|</span>
+          <li className={linkStyle}>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
         <button
