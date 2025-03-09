@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const ProjectCard = ({
   index,
@@ -13,13 +12,21 @@ const ProjectCard = ({
   const cardRef = useRef(null);
   //  ---------------- STYLES ---------------- //
   const st_skills = `p-2 text-zinc-100 rounded-full bg-gradient-to-br cursor-default from-slate-900 to-slate-700 hover:transform hover:scale-105 transition-all ease-in-out duration-300`;
-  const st_project_card = `project_card flex hover:flex-col group relative items-center justify-center h-[600px] w-[1300px] bg-center  transition-all ease-in-out duration-500 rounded-full hover:w-[150%] gap-4 z-0`;
+  const st_project_card = `project_card flex flex-col group relative items-center justify-center w-full h-auto p-10 lg:h-[600px] lg:w-[1300px] bg-center transition-all ease-in-out duration-500 lg:rounded-full lg:hover:w-[150%] gap-4 z-0`;
   //  ---------------- STYLES ---------------- //
 
+  const [isPassed, setIsPassed] = useState(false);
   useEffect(() => {
     const card = cardRef.current;
 
     if (!card) return; // Make sure cardRef is not null
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsPassed(!entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(card);
 
     const handleMouseEnter = () => {
       const skillElements = card.querySelectorAll("#project_skills span");
@@ -36,6 +43,7 @@ const ProjectCard = ({
     card.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
+      observer.disconnect();
       card.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
@@ -43,17 +51,23 @@ const ProjectCard = ({
     <div
       ref={cardRef}
       key={index}
-      className={st_project_card}
+      className={`${isPassed ? "opacity-0" : "cardPassed"} ${st_project_card}`}
       style={{ backgroundImage: `url(${imgUrl})` }}
       title={imgAlt}
     >
-      <h2 id="project_name" className="text-8xl font-bold text-shadow z-10">
+      <h2
+        id="project_name"
+        className="text-4xl lg:text-8xl font-bold text-shadow z-10"
+      >
         {name}
       </h2>
-      <p id="project_description" className="hidden w-3xl z-10">
+      <p id="project_description" className="lg:hidden lg:w-3xl z-10">
         {description}
       </p>
-      <p id="project_skills" className="hidden z-10 gap-4 mt-6">
+      <p
+        id="project_skills"
+        className="lg:hidden z-10 gap-4 mt-6 flex flex-wrap"
+      >
         {skills.map((skill, skillIndex) => (
           <span key={skillIndex} className={st_skills}>
             {skill}
@@ -61,7 +75,7 @@ const ProjectCard = ({
           </span>
         ))}
       </p>
-      <button className="z-10 hidden mt-6 button_TM_primary">
+      <button className="z-10 lg:hidden mt-6 button_TM_primary">
         <a href={url} target="blank">
           Visit project
         </a>

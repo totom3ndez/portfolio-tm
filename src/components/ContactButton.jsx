@@ -20,7 +20,7 @@ const ContactButton = () => {
 
     observer.observe(target);
 
-    return () => observer.unobserve(target);
+    return () => observer.disconnect();
   }, []);
 
   return (

@@ -3,7 +3,7 @@ export const projects = [
     // Italo ADN project details
     name: "Italo ADN",
     description:
-      "I collaborated with Italo ADN to design and develop their website, specializing in Italian citizenship services. Key features include: \n\n - Built with Astro for speed and smooth navigation. \n - Integrated blog with over 10 articles. \n - Resend API-managed form for tailored services.",
+      "I collaborated with Italo ADN to design and develop their website, specializing in Italian citizenship services. Key features include: Built with Astro for speed and smooth navigation. Integrated blog with over 10 articles. Resend API-managed form for tailored services.",
     skills: ["Astro", "Resend API", "JavaScript", "Markdown", "TailwindCSS"],
     url: "https://italoadn.com",
     imgUrl: "./italo_cover.webp", // Add an alt property, if applicable
@@ -12,7 +12,7 @@ export const projects = [
     // Arbologico app details
     name: "Arbologico",
     description:
-      "Arbologico is a free app that helps you create your family tree, plan family schedules, and streamline Italian citizenship processes. Key highlights: \n\n - Completely free with no registration. \n - User-friendly and intuitive platform.",
+      "Arbologico is a free app that helps you create your family tree, plan family schedules, and streamline Italian citizenship processes. Key highlights: Completely free with no registration. User-friendly and intuitive platform.",
     skills: ["HTML", "CSS", "JavaScript", "jQuery"],
     url: "https://totom3ndez.github.io/Arbologico/",
     imgUrl: "./genealogic.webp", // Add an alt property, if applicable

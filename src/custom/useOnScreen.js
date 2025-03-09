@@ -16,6 +16,7 @@ export const useOnScreen = (ref, tresh = 0.1) => {
   useEffect(() => {
     if (ref.current) {
       observer.observe(ref.current);
+      console.log("is visible");
     }
 
     return () => {
