@@ -3,11 +3,10 @@ import ProjectCard from "./ProjectCard";
 import Slider from "./Slider";
 import { HiMiniCodeBracket } from "react-icons/hi2";
 
-export const Projects = () => {
-  //  ---------------- STYLES ---------------- //
-  const st_project_container = `mx-auto py-50 h-auto w-full flex flex-col gap-20 items-center overflow-hidden text-zinc-100 lg:bg-radial-[at_60%_50%] to-slate-900 from-slate-700 lg:to-70% 
+const st_project_container = `mx-auto py-50 h-auto w-full flex flex-col gap-20 items-center overflow-hidden text-zinc-100  
   bg-gradient-to-b to-40% project_container`;
-  //  ---------------- STYLES ---------------- //
+
+export const Projects = ({ dark }) => {
   return (
     <>
       <Slider
@@ -18,7 +17,13 @@ export const Projects = () => {
         icon2={<HiMiniCodeBracket />}
         icon3={<HiMiniCodeBracket />}
       />
-      <div className={st_project_container}>
+      <div
+        className={`${st_project_container} ${
+          dark
+            ? "lg:bg-radial-[at_60%_50%] to-slate-900 from-slate-700 lg:to-70%"
+            : "bg-white"
+        }`}
+      >
         {projects.map(
           ({ name, description, skills, url, imgUrl, imgAlt }, index) => (
             <ProjectCard

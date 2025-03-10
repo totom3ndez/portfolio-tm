@@ -3,6 +3,7 @@ import { Navbar, Hero, Projects } from "./components";
 import { useEffect } from "react";
 import Contact from "./components/Contact";
 import smoothscroll from "smoothscroll-polyfill";
+import Footer from "./components/Footer";
 
 // Activate polyfill
 smoothscroll.polyfill();
@@ -36,8 +37,9 @@ function App() {
       <div id="home" className={st_home}>
         <Navbar dark={dark} handleTheme={handleTheme} />
         <Hero dark={dark} />
-        <Projects />
+        <Projects dark={dark} />
         <Contact />
+        <Footer />
       </div>
     </>
   );

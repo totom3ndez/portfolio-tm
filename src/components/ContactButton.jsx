@@ -27,10 +27,8 @@ const ContactButton = () => {
     <div ref={targetRef} className="buttonWrapper relative col-start-2">
       <button
         className={`${
-          isPassed
-            ? "passed fixed m-4 bottom-0 left-0 backdrop-blur-3xl"
-            : "bg-slate-800 "
-        } buttonContact group h-fit text-zinc-100 gap-2 rounded-full p-2  border-1 border-zinc-700 flex items-center`}
+          isPassed ? "passed fixed m-4 bottom-0 left-0 backdrop-blur-3xl" : ""
+        } buttonContact group h-fit gap-2 rounded-full p-2  border-1 border-zinc-700 flex items-center`}
       >
         <span className="hidden lg:flex">I'm available for work -</span>
         <i className="group-hover:text-yellow-100 transition-colors ease-in">

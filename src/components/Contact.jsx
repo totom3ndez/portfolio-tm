@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Slider from "./Slider";
-import Footer from "./Footer";
 import {
   LuMessageCircleHeart,
   LuMessageCircleCode,
@@ -111,7 +110,6 @@ const Contact = () => {
           </div>
         </form>
       </div>
-      <Footer />
     </section>
   );
 };

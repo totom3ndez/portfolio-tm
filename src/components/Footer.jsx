@@ -7,15 +7,15 @@ const Footer = () => {
       <ul className="flex justify-center items-center gap-8 lg:gap-4 text-2xl">
         <li>
           <a href="https://github.com/totom3ndez" target="blank">
-            <SiGithub className="opacity-50 hover:text-yellow-200 hover:opacity-100" />
+            <SiGithub className="opacity-50 hover:opacity-100" />
           </a>
         </li>
         <a href="https://www.linkedin.com/in/ts-mendez/" target="blank">
-          <SiLinkedin className="opacity-50 hover:text-yellow-200 hover:opacity-100" />
+          <SiLinkedin className="opacity-50 hover:opacity-100" />
         </a>
         <li>
           <a href="https://www.instagram.com/to.mendez/" target="blank">
-            <SiInstagram className="opacity-50 hover:text-yellow-200 hover:opacity-100" />
+            <SiInstagram className="opacity-50 hover:opacity-100" />
           </a>
         </li>
         <li></li>
