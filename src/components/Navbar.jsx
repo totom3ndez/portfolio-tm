@@ -1,7 +1,12 @@
 import React from "react";
 import { LuMoonStar, LuSun } from "react-icons/lu";
+import { useStore } from "../store/store";
 
-export const Navbar = ({ dark, handleTheme }) => {
+export const Navbar = () => {
+  const dark = useStore((state) => state.dark);
+
+  const handleTheme = useStore((state) => state.setTheme);
+
   //  ---------------- STYLES ---------------- //
   const st_link = [
     "opacity-50 hover:opacity-100 transition-all ease-in duration-200",

@@ -1,19 +1,27 @@
 import React from "react";
+import { useStore } from "../store/store";
 
 const NewInput = ({ type, name, label, style, value, onChange }) => {
+  const dark = useStore((state) => state.dark);
+
   return (
-    <div className={`input_group  ${style}`}>
+    <div className={`input_group ${style}`}>
       <input
         required
         type={type}
         name={name}
         autoComplete="off"
-        className="input"
+        className="input rounded-full"
         value={value}
         onChange={onChange}
         minLength={3}
       />
-      <label htmlFor={name} className="user-label">
+      <label
+        htmlFor={name}
+        className={`${
+          dark ? "bg-slate-900 p-2" : "p-2 bg-zinc-100 text-slate-900"
+        } user-label`}
+      >
         {label}
       </label>
     </div>

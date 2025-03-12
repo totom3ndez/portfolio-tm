@@ -7,15 +7,14 @@ import {
   LuSend,
 } from "react-icons/lu";
 import NewInput from "./newInput";
+import { useStore } from "../store/store";
 
 const Contact = () => {
+  const dark = useStore((state) => state.dark);
   const [isPassed, setIsPassed] = useState(false);
   const targetRef = useRef(null);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
+  const [data, setData] = useState({ name: "", email: "", message: "" });
   useEffect(() => {
     const target = targetRef.current;
     if (!target) return;
@@ -28,24 +27,20 @@ const Contact = () => {
     observer.observe(target);
 
     return () => observer.disconnect(); // Properly clean up the observer
-  }, []);
+  }, [targetRef, setIsPassed]); //Added dependencies to useEffect
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setName("");
-    setEmail("");
-    setMessage("");
+    setData({ name: "", email: "", message: "" }); // Reset the entire data object
+    console.log("Form submitted:", data); //You can add your submit logic here
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "firstName") {
-      setName(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "message") {
-      setMessage(value);
-    }
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -73,7 +68,7 @@ const Contact = () => {
               label="First name"
               name="firstName"
               style="div1"
-              value={name}
+              value={data.name}
               onChange={handleChange}
             />
             <NewInput
@@ -81,21 +76,26 @@ const Contact = () => {
               label="Email"
               name="email"
               style="div2 relative"
-              value={email}
+              value={data.email}
               onChange={handleChange}
             />
           </div>
           <div className="input_group relative">
             <textarea
-              className="input resize-none invalid:text-red-300 invalid:border-red-300"
+              className="input resize-none rounded-full invalid:text-red-300 invalid:border-red-300"
               name="message"
               id="message"
-              value={message}
+              value={data.message}
               onChange={handleChange}
               required
               autoComplete="off"
             ></textarea>
-            <label htmlFor="message" className="user-label">
+            <label
+              htmlFor="message"
+              className={`${
+                dark ? "bg-slate-900 p-2" : "bg-zinc-100 p-2 text-slate-900"
+              } user-label`}
+            >
               Message
             </label>
           </div>
