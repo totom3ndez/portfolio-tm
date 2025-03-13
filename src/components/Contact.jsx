@@ -37,6 +37,35 @@ const Contact = () => {
     }));
   };
 
+  useEffect(() => {
+    const form = targetRef.current;
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = data.email
+      const subject = `Email send from portfolio by ${data.name}`
+      const message = data.message
+
+      try {
+        const response = await fetch('/src/api/contact.js', { // or your backend URL
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, subject, message }),
+        });
+
+        if (response.ok) {
+          alert('Email sent successfully!');
+        } else {
+          alert('Failed to send email.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('An error occurred.');
+      }
+    });
+  })
+
   return (
     <section className="w-full h-[70%]">
       <Slider
@@ -49,8 +78,6 @@ const Contact = () => {
       />
       <div className="p-20">
         <form
-          action={'../api/contact.js'}
-          method="POST"
           ref={targetRef}
           className={`relative lg:w-1/3 w-full mx-auto ${
             isPassed ? "opacity-0" : "passed"
@@ -59,21 +86,21 @@ const Contact = () => {
           <h3 className="text-xl m-4">Let's work together</h3>
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
             <NewInput
-              type="email"
-              label="Email"
-              name="email"
-              style="div2 relative"
-              value={data.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
-            <NewInput
               type="text"
               label="Name"
               name="name"
               style="div2 relative"
               value={data.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
+            <NewInput
+              type="email"
+              label="Email"
+              name="email"
+              style="div2 relative"
+              value={data.email}
               onChange={handleChange}
             />
           </div>
