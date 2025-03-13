@@ -10,11 +10,9 @@ const NewInput = ({ type, name, label, style, value, onChange }) => {
         required
         type={type}
         name={name}
-        autoComplete="off"
         className="input rounded-full"
         value={value}
         onChange={onChange}
-        minLength={3}
       />
       <label
         htmlFor={name}

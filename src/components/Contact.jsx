@@ -29,12 +29,6 @@ const Contact = () => {
     return () => observer.disconnect(); // Properly clean up the observer
   }, [targetRef, setIsPassed]); //Added dependencies to useEffect
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setData({ name: "", email: "", message: "" }); // Reset the entire data object
-    console.log("Form submitted:", data); //You can add your submit logic here
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
@@ -61,24 +55,25 @@ const Contact = () => {
           className={`relative lg:w-1/3 w-full mx-auto ${
             isPassed ? "opacity-0" : "passed"
           }`}
-          onSubmit={handleSubmit}
         >
           <h3 className="text-xl m-4">Let's work together</h3>
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
-            <NewInput
-              type="text"
-              label="First name"
-              name="firstName"
-              style="div1"
-              value={data.name}
-              onChange={handleChange}
-            />
             <NewInput
               type="email"
               label="Email"
               name="email"
               style="div2 relative"
               value={data.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
+            <NewInput
+              type="text"
+              label="Name"
+              name="name"
+              style="div2 relative"
+              value={data.name}
               onChange={handleChange}
             />
           </div>
