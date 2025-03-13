@@ -375,10 +375,6 @@ form.passed {
   letter-spacing: 1px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 .input-group {
   position: relative;
   display: block;

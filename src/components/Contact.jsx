@@ -55,6 +55,8 @@ const Contact = () => {
       />
       <div className="p-20">
         <form
+          action={'../api/contact.js'}
+          method="POST"
           ref={targetRef}
           className={`relative lg:w-1/3 w-full mx-auto ${
             isPassed ? "opacity-0" : "passed"

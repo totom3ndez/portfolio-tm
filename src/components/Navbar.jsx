@@ -56,7 +56,7 @@ export const Navbar = () => {
             <a href="#home">{isMobile ? <GoHome  className="size-6"/> : 'Home'}</a>
           </li>
           <span>|</span>
-          <li className='st_link'>
+          <li className={st_link}>
             <a href="#projects">
               {isMobile ? <GoStack className="size-6" /> : 'Projects'}
             </a>
