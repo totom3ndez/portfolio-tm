@@ -6,7 +6,7 @@ import {
   LuMessageCircleMore,
   LuSend,
 } from "react-icons/lu";
-import NewInput from "./newInput";
+import NewInput from "./NewInput";
 import { useStore } from "../store/store";
 
 const Contact = () => {

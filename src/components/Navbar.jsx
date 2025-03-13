@@ -36,7 +36,7 @@ export const Navbar = () => {
   const st_list = [
     `${
       dark ? "darkHover" : "lightHover bg-dark text-white"
-    } flex items-center mx-auto my-0 gap-5 px-4 py-2 backdrop-blur-3xl rounded-full border-1 border-zinc-600`,
+    } flex items-center mx-auto my-0 gap-5 h-15 py-2 px-4 backdrop-blur-3xl rounded-full border-1 border-zinc-600`,
   ];
   const st_nav = `${
     dark ? "text-white" : "text-dark"
@@ -51,19 +51,19 @@ export const Navbar = () => {
   return (
     <>
       <nav className={st_nav}>
-        <ul className={st_list}>
+        <ul className={`${st_list} ${isMobile ? '' : 'py-0'}`}>
           <li className={st_link}>
-            <a href="#home">{isMobile ? <GoHome /> : 'Home'}</a>
+            <a href="#home">{isMobile ? <GoHome  className="size-6"/> : 'Home'}</a>
           </li>
           <span>|</span>
-          <li className={st_link}>
+          <li className='st_link'>
             <a href="#projects">
-              {isMobile ? <GoStack /> : 'Projects'}
+              {isMobile ? <GoStack className="size-6" /> : 'Projects'}
             </a>
           </li>
           <span>|</span>
           <li className={st_link}>
-            <a href="#contact">{isMobile ? <GoPersonFill /> : 'Contact'}</a>
+            <a href="#contact">{isMobile ? <GoPersonFill className="size-6" /> : 'Contact'}</a>
           </li>
         </ul>
         <button className={st_button} onClick={handleTheme}>
