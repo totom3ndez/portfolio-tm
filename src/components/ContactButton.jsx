@@ -24,9 +24,8 @@ const ContactButton = () => {
   }, []);
 
   return (
-    <div ref={targetRef} className="buttonWrapper relative col-start-2 group">
-      <div className="absolute transitiona-all duration-1000 opacity-10 -inset-px bg-gradient-to-r to-[#174ba5] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-      <button
+    <div ref={targetRef} className="buttonWrapper relative col-start-2 group text-xl">
+      <a href="#contact"
         className={`${
           isPassed ? "passed fixed m-4 bottom-0 left-0 backdrop-blur-3xl" : ""
         } buttonContact group h-fit gap-2 rounded-full p-2  border-1 border-zinc-700 flex items-center`}
@@ -38,7 +37,7 @@ const ContactButton = () => {
         <span className="text-xl transform rotate-315 group-hover:rotate-360 transition-all ease-in-out duration-300">
           <LuArrowRight className="group-hover:text-yellow-100 " />
         </span>
-      </button>
+      </a>
     </div>
   );
 };

@@ -23,7 +23,7 @@ export const Projects = () => {
       <div
         className={`${st_project_container} ${
           dark
-            ? "lg:bg-radial-[at_60%_50%] from-slate-900 to-slate-700  lg:to-90%"
+            ? "bg-dark"
             : "bg-white"
         }`}
       >
@@ -42,5 +42,5 @@ export const Projects = () => {
         )}
       </div>
     </>
-  );
+  ); 
 };

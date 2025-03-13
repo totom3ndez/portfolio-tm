@@ -93,7 +93,7 @@ const Contact = () => {
             <label
               htmlFor="message"
               className={`${
-                dark ? "bg-slate-900 p-2" : "bg-zinc-100 p-2 text-slate-900"
+                dark ? "bg-dark p-2" : "bg-zinc-100 p-2 text-dark"
               } user-label`}
             >
               Message
@@ -101,7 +101,7 @@ const Contact = () => {
           </div>
           <div className="flex mt-4">
             <button
-              className="flex gap-2 items-center justify-center mx-auto w-full lg:w-1/2 p-4 bg-yellow-200 lg:opacity-50 text-slate-900 rounded-full hover:opacity-100 group"
+              className="flex gap-2 items-center justify-center mx-auto w-full lg:w-1/2 p-4 bg-yellow lg:opacity-50 text-dark rounded-full hover:opacity-100 group"
               type="submit"
             >
               Send message!

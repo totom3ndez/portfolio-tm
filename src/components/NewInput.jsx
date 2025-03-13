@@ -19,7 +19,7 @@ const NewInput = ({ type, name, label, style, value, onChange }) => {
       <label
         htmlFor={name}
         className={`${
-          dark ? "bg-slate-900 p-2" : "p-2 bg-zinc-100 text-slate-900"
+          dark ? "bg-dark p-2" : "p-2 bg-zinc-100 text-dark"
         } user-label`}
       >
         {label}

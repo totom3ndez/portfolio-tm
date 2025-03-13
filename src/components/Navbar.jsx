@@ -1,8 +1,30 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { LuMoonStar, LuSun } from "react-icons/lu";
 import { useStore } from "../store/store";
+import { GoHome, GoPersonFill, GoStack } from "react-icons/go";
 
 export const Navbar = () => {
+
+  const [isMobile, setIsMobile] = useState()
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsMobile(true)
+      } else {
+        setIsMobile(false)
+      }
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    handleResize()
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
   const dark = useStore((state) => state.dark);
 
   const handleTheme = useStore((state) => state.setTheme);
@@ -13,40 +35,35 @@ export const Navbar = () => {
   ];
   const st_list = [
     `${
-      dark ? "darkHover" : "lightHover"
+      dark ? "darkHover" : "lightHover bg-dark text-white"
     } flex items-center mx-auto my-0 gap-5 px-4 py-2 backdrop-blur-3xl rounded-full border-1 border-zinc-600`,
   ];
   const st_nav = `${
-    dark ? "text-zinc-100 " : "text-slate-900"
+    dark ? "text-white" : "text-dark"
   } p-4 flex w-full sticky top-0 z-50 items-center transition-bg ease-in-out`;
   const st_button = `${
-    dark ? "text-slate-900 bg-yellow-200" : "text-yellow-200 bg-slate-900"
+    dark ? "text-dark bg-yellow" : "text-yellow bg-dark"
   } p-2 m-4 w-fit h-fit 0 rounded-full absolute right-0`;
   //  ---------------- STYLES ---------------- //
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  
 
   return (
     <>
       <nav className={st_nav}>
         <ul className={st_list}>
           <li className={st_link}>
-            <button onClick={() => scrollToSection("home")}>Home</button>
+            <a href="#home">{isMobile ? <GoHome /> : 'Home'}</a>
           </li>
           <span>|</span>
           <li className={st_link}>
-            <button onClick={() => scrollToSection("projects")}>
-              Projects
-            </button>
+            <a href="#projects">
+              {isMobile ? <GoStack /> : 'Projects'}
+            </a>
           </li>
           <span>|</span>
           <li className={st_link}>
-            <button onClick={() => scrollToSection("contact")}>Contact</button>
+            <a href="#contact">{isMobile ? <GoPersonFill /> : 'Contact'}</a>
           </li>
         </ul>
         <button className={st_button} onClick={handleTheme}>

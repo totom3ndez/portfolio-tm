@@ -12,9 +12,8 @@ function App() {
   // STYLE
   const st_home = `${
     dark
-      ? `lg:bg-radial-[at_30%_15%] to-slate-900 from-slate-700 lg:to-30% text-white 
-    bg-gradient-to-b to-40%`
-      : "bg-zinc-100 text-slate-900"
+      ? `bg-dark text-white`
+      : "bg-zinc-100 text-dark"
   } w-full flex flex-col items-center transition-all ease-in-out duration-600`;
 
   // HANDLERS

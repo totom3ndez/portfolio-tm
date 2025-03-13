@@ -19,7 +19,7 @@ const Slider = ({
   ]).flat();
 
   return (
-    <div id={id} className="slider bg-yellow-200 py-2">
+    <div id={id} className="slider bg-yellow py-2">
       <div className={`slide-track-${side} flex gap-2 text-2xl text-black`}>
         {items.map((item, index) => (
           <div key={index} className="flex items-center">

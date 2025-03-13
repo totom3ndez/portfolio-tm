@@ -11,7 +11,7 @@ const ProjectCard = ({
 }) => {
   const cardRef = useRef(null);
   //  ---------------- STYLES ---------------- //
-  const st_skills = `p-2 text-zinc-100 rounded-full bg-gradient-to-br cursor-default from-slate-900 to-slate-700 hover:transform hover:scale-105 transition-all ease-in-out duration-300`;
+  const st_skills = `p-2 text-zinc-100 rounded-full bg-gradient-to-br cursor-default from-dark to-slate-700 hover:transform hover:scale-105 transition-all ease-in-out duration-300`;
   const st_project_card = `project_card flex flex-col group relative items-center justify-center w-full h-auto p-10 lg:h-[600px] lg:w-[1300px] bg-center transition-all ease-in-out duration-500 lg:rounded-full lg:hover:w-[150%] gap-4 z-0`;
   //  ---------------- STYLES ---------------- //
 
