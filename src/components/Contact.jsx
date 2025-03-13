@@ -12,6 +12,7 @@ import { useStore } from "../store/store";
 const Contact = () => {
   const dark = useStore((state) => state.dark);
   const [isPassed, setIsPassed] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
   const targetRef = useRef(null);
 
   const [data, setData] = useState({ name: "", email: "", message: "" });
@@ -37,34 +38,15 @@ const Contact = () => {
     }));
   };
 
-  useEffect(() => {
-    const form = targetRef.current;
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = data.email
-      const subject = `Email send from portfolio by ${data.name}`
-      const message = data.message
-
-      try {
-        const response = await fetch(import.meta.env.VITE_BACKEND_URL, { // or your backend URL
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, subject, message }),
-        });
-
-        if (response.ok) {
-          alert('Email sent successfully!');
-        } else {
-          alert('Failed to send email.');
-        }
-      } catch (error) {
-        console.error(error);
-        alert('An error occurred.');
-      }
-    });
-  })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add logic for submitting the form data
+    setIsSubmited(true);
+    setTimeout(() => {
+      setIsSubmited(false);
+      setData({ name: "", email: "", message: "" });
+    }, 2000);
+  };
 
   return (
     <section className="w-full h-[70%]">
@@ -82,6 +64,7 @@ const Contact = () => {
           className={`relative lg:w-1/3 w-full mx-auto ${
             isPassed ? "opacity-0" : "passed"
           }`}
+          onSubmit={handleSubmit}
         >
           <h3 className="text-xl m-4">Let's work together</h3>
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
@@ -131,6 +114,9 @@ const Contact = () => {
               Send message!
               <LuSend className="group-hover:transform group-hover:rotate-45 transition ease-in-out" />
             </button>
+          </div>
+          <div className="flex justify-center relative">
+            {isSubmited ? <p className="absolute top-0 bg-green-200 p-4 rounded-full mt-4 w-fit text-dark text-xl">Form submited!</p> : ''}
           </div>
         </form>
       </div>
