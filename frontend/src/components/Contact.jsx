@@ -39,8 +39,8 @@ const Contact = () => {
 
   useEffect(() => {
     const form = targetRef.current;
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       const email = data.email
       const subject = `Email send from portfolio by ${data.name}`
       const message = data.message
