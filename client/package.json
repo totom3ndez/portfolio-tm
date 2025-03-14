@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.0.14",
     "dotenv": "^16.4.7",
     "googleapis": "^146.0.0",

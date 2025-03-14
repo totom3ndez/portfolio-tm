@@ -7,6 +7,7 @@ import {
   LuSend,
 } from "react-icons/lu";
 import { SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
+import { ContactForm } from "./ContactForm";
 
 const Contact = () => {
   return (
@@ -26,6 +27,7 @@ const Contact = () => {
             I am always open to discussing new projects, creative ideas or
             opportunities to be part of your visions.
           </p>
+          <ContactForm />
           <ul className="flex flex-col justify-center items-left gap-8 lg:gap-4 text-2xl">
             <li className="opacity-50 hover:opacity-100">
               <a
