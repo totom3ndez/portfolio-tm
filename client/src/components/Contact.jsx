@@ -6,77 +6,12 @@ import {
   LuMessageCircleMore,
   LuSend,
 } from "react-icons/lu";
+import { SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
 import NewInput from "./NewInput";
 import { useStore } from "../store/store";
 
 const Contact = () => {
   const dark = useStore((state) => state.dark);
-  const [isPassed, setIsPassed] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const targetRef = useRef(null);
-
-  const [data, setData] = useState({ name: "", email: "", message: "" });
-
-  // Observer for effects on entry
-  useEffect(() => {
-    const target = targetRef.current;
-    if (!target) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsPassed(!entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-
-    observer.observe(target);
-
-    return () => {
-  if (observer) {
-    observer.disconnect();
-  }}; // Properly clean up the observer
-  }, [targetRef, setIsPassed]); 
-  
-  // Handler for input changes
-  const handleChange = (e) => { 
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
-  // Handler for form submission
-  const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!data.name || !data.email || !data.message) {
-    alert("Por favor, completa todos los campos.");
-    return;
-  }
-
-  try {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      setIsSubmitted(true);
-      setData({ name: "", email: "", message: "" });
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 2000);
-    } else {
-      alert("Error al enviar el formulario. Inténtalo de nuevo.");
-    }
-  } catch (error) {
-    console.error("Error en el envío:", error);
-    alert("Ocurrió un error. Por favor, inténtalo más tarde.");
-  }
-};
-
 
   return (
     <section className="w-full h-[70%]">
@@ -89,66 +24,45 @@ const Contact = () => {
         icon3={<LuMessageCircleMore />}
       />
       <div className="p-20">
-        <form
-          ref={targetRef}
-          className={`relative lg:w-1/3 w-full mx-auto ${isPassed ? "opacity-0" : "opacity-100"}`}
-          onSubmit={handleSubmit}
-        >
-          <h3 className="text-xl m-4">Let's work together</h3>
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
-            <NewInput
-              onChange={handleChange}
-              type="text"
-              label="Name"
-              name="name"
-              style="div2 relative col-span-2"
-              value={data.name}
-            />
-          </div>
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
-            <NewInput
-              onChange={handleChange}
-              type="email"
-              label="Email"
-              name="email"
-              style="div2 relative col-span-2"
-              value={data.email}
-            />
-          </div>
-          <div className="input_group relative">
-            <textarea
-              onChange={handleChange}
-              name="message"
-              id="message"
-              className="input resize-none rounded-full invalid:text-red-300 invalid:border-red-300"
-              required
-              value={data.message}
-              placeholder="Escribe tu mensaje aquí..."
-            ></textarea>
-            <label
-              htmlFor="message"
-              className={`${
-                dark ? "bg-dark p-2" : "bg-zinc-100 p-2 text-dark"
-              } user-label`}
-            >
-              Message
-            </label>
-          </div>
-          <div className="flex mt-4">
-            <button
-              className="flex gap-2 items-center justify-center mx-auto w-full lg:w-1/2 p-4 bg-yellow lg:opacity-50 text-dark rounded-full hover:opacity-100 group"
-              type="submit"
-              aria-label="Enviar mensaje"
-            >
-              Send message!
-              <LuSend className="group-hover:transform group-hover:rotate-45 transition ease-in-out" />
-            </button>
-
-          </div>
-          <div className="flex justify-center relative">
-            {isSubmitted ? <p className="absolute top-0 bg-green-200 p-4 rounded-full mt-4 w-fit text-dark text-xl">Form submited!</p> : ''}
-          </div>
-        </form>
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-4xl font-bold mb-4">Contact</h2>
+          <p className="text-lg text-gray-600 mb-8">
+            I am always open to discussing new projects, creative ideas or
+            opportunities to be part of your visions.
+          </p>
+          <ul className="flex flex-col justify-center items-left gap-8 lg:gap-4 text-2xl">
+            <li className="opacity-50 hover:opacity-100">
+              <a
+                href="https://github.com/totom3ndez"
+                target="blank"
+                className="flex gap-4 items-center "
+              >
+                <SiGithub className="size-10" />
+                /totom3ndez
+              </a>
+            </li>
+            <li className="opacity-50 hover:opacity-100">
+              <a
+                href="https://www.linkedin.com/in/ts-mendez/"
+                target="blank"
+                className="flex gap-4 items-center "
+              >
+                <SiLinkedin className="size-10" />
+                /ts-mendez
+              </a>
+            </li>
+            <li className="opacity-50 hover:opacity-100">
+              <a
+                href="https://www.instagram.com/to.mendez/"
+                target="blank"
+                className="flex gap-4 items-center "
+              >
+                <SiInstagram className="size-10" />
+                /to.mendez
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
