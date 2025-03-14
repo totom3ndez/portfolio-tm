@@ -16,6 +16,8 @@ const Contact = () => {
   const targetRef = useRef(null);
 
   const [data, setData] = useState({ name: "", email: "", message: "" });
+
+  // Observer for effects on entry
   useEffect(() => {
     const target = targetRef.current;
     if (!target) return;
@@ -28,24 +30,36 @@ const Contact = () => {
     observer.observe(target);
 
     return () => observer.disconnect(); // Properly clean up the observer
-  }, [targetRef, setIsPassed]); //Added dependencies to useEffect
-
-  const handleChange = (e) => {
+  }, [targetRef, setIsPassed]); 
+  
+  // Handler for input changes
+  const handleChange = (e) => { 
     const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
+    setData({
+      ...data,
       [name]: value,
-    }));
+    });
   };
-
-  const handleSubmit = (e) => {
+  // Handler for form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic for submitting the form data
-    setIsSubmited(true);
-    setTimeout(() => {
-      setIsSubmited(false);
+    const response = await fetch ("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    if (response.ok) {
+      setIsSubmited(true);
       setData({ name: "", email: "", message: "" });
-    }, 2000);
+      // Remove alert submission
+      setTimeout(() => {
+        setIsSubmited(false);
+      }, 2000);
+    } else {
+      alert("Error submitting form");
+    }
   };
 
   return (
@@ -69,33 +83,33 @@ const Contact = () => {
           <h3 className="text-xl m-4">Let's work together</h3>
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
             <NewInput
+              onChange={handleChange}
               type="text"
               label="Name"
               name="name"
               style="div2 relative col-span-2"
               value={data.name}
-              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 mb-4">
             <NewInput
+              onChange={handleChange}
               type="email"
               label="Email"
               name="email"
               style="div2 relative col-span-2"
               value={data.email}
-              onChange={handleChange}
             />
           </div>
           <div className="input_group relative">
             <textarea
-              className="input resize-none rounded-full invalid:text-red-300 invalid:border-red-300"
+              onChange={handleChange}
               name="message"
               id="message"
-              value={data.message}
-              onChange={handleChange}
-              required
+              className="input resize-none rounded-full invalid:text-red-300 invalid:border-red-300"
               autoComplete="off"
+              required
+              value={data.message}
             ></textarea>
             <label
               htmlFor="message"
