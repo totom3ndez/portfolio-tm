@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Slider from "./Slider";
 import {
   LuMessageCircleHeart,
@@ -7,12 +7,8 @@ import {
   LuSend,
 } from "react-icons/lu";
 import { SiGithub, SiInstagram, SiLinkedin } from "react-icons/si";
-import NewInput from "./NewInput";
-import { useStore } from "../store/store";
 
 const Contact = () => {
-  const dark = useStore((state) => state.dark);
-
   return (
     <section className="w-full h-[70%]">
       <Slider
