@@ -1,0 +1,11 @@
+POST https://oauth2.googleapis.com/token 
+
+Content-Type: application/json"
+{
+  "code": "4/0AQSTgQEgpI5zmRBeeAide8XSxFE8VjByUdApcQ4kMNwt3WnsuJlJTKqYSjjhfK8EgdxqIA",
+  "client_id": "703950488248-2qjemfp3gffsvlds2ba87r41opn4eo8i.apps.googleusercontent.com",
+  "client_secret": "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",
+  "redirect_uri": "https://tomas-mendez-portfolio.vercel.app/",
+  "grant_type": "authorization_code",
+  "access_type": "offline"
+}

@@ -12,7 +12,8 @@ import { useStore } from "../store/store";
 const Contact = () => {
   const dark = useStore((state) => state.dark);
   const [isPassed, setIsPassed] = useState(false);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const targetRef = useRef(null);
 
   const [data, setData] = useState({ name: "", email: "", message: "" });
@@ -29,7 +30,10 @@ const Contact = () => {
 
     observer.observe(target);
 
-    return () => observer.disconnect(); // Properly clean up the observer
+    return () => {
+  if (observer) {
+    observer.disconnect();
+  }}; // Properly clean up the observer
   }, [targetRef, setIsPassed]); 
   
   // Handler for input changes
@@ -42,25 +46,37 @@ const Contact = () => {
   };
   // Handler for form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch ("/api/contact", {
+  e.preventDefault();
+  if (!data.name || !data.email || !data.message) {
+    alert("Por favor, completa todos los campos.");
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
+
     if (response.ok) {
-      setIsSubmited(true);
+      setIsSubmitted(true);
       setData({ name: "", email: "", message: "" });
-      // Remove alert submission
+
       setTimeout(() => {
-        setIsSubmited(false);
+        setIsSubmitted(false);
       }, 2000);
     } else {
-      alert("Error submitting form");
+      alert("Error al enviar el formulario. Inténtalo de nuevo.");
     }
-  };
+  } catch (error) {
+    console.error("Error en el envío:", error);
+    alert("Ocurrió un error. Por favor, inténtalo más tarde.");
+  }
+};
+
 
   return (
     <section className="w-full h-[70%]">
@@ -75,9 +91,7 @@ const Contact = () => {
       <div className="p-20">
         <form
           ref={targetRef}
-          className={`relative lg:w-1/3 w-full mx-auto ${
-            isPassed ? "opacity-0" : "passed"
-          }`}
+          className={`relative lg:w-1/3 w-full mx-auto ${isPassed ? "opacity-0" : "opacity-100"}`}
           onSubmit={handleSubmit}
         >
           <h3 className="text-xl m-4">Let's work together</h3>
@@ -107,9 +121,9 @@ const Contact = () => {
               name="message"
               id="message"
               className="input resize-none rounded-full invalid:text-red-300 invalid:border-red-300"
-              autoComplete="off"
               required
               value={data.message}
+              placeholder="Escribe tu mensaje aquí..."
             ></textarea>
             <label
               htmlFor="message"
@@ -124,13 +138,15 @@ const Contact = () => {
             <button
               className="flex gap-2 items-center justify-center mx-auto w-full lg:w-1/2 p-4 bg-yellow lg:opacity-50 text-dark rounded-full hover:opacity-100 group"
               type="submit"
+              aria-label="Enviar mensaje"
             >
               Send message!
               <LuSend className="group-hover:transform group-hover:rotate-45 transition ease-in-out" />
             </button>
+
           </div>
           <div className="flex justify-center relative">
-            {isSubmited ? <p className="absolute top-0 bg-green-200 p-4 rounded-full mt-4 w-fit text-dark text-xl">Form submited!</p> : ''}
+            {isSubmitted ? <p className="absolute top-0 bg-green-200 p-4 rounded-full mt-4 w-fit text-dark text-xl">Form submited!</p> : ''}
           </div>
         </form>
       </div>
