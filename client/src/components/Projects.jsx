@@ -1,10 +1,8 @@
 import { useStore } from "../store/store";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
-import Slider from "./Slider";
-import { HiMiniCodeBracket } from "react-icons/hi2";
 
-const st_project_container = `mx-auto py-50 h-auto w-full flex flex-col gap-20 items-center overflow-hidden text-zinc-100  
+const st_project_container = `mx-auto py-30 h-auto w-full flex flex-col gap-20 items-center overflow-hidden text-zinc-100  
   bg-gradient-to-b to-40% project_container`;
 
 export const Projects = () => {
@@ -12,21 +10,11 @@ export const Projects = () => {
 
   return (
     <>
-      <Slider
-        id="projects"
-        text="Projects"
-        side="left"
-        icon1={<HiMiniCodeBracket />}
-        icon2={<HiMiniCodeBracket />}
-        icon3={<HiMiniCodeBracket />}
-      />
       <div
-        className={`${st_project_container} ${
-          dark
-            ? "bg-dark"
-            : "bg-white"
-        }`}
+        id="projects"
+        className={`${st_project_container} ${dark ? "bg-dark" : "bg-white"}`}
       >
+        <h2 className="text-center text-3xl mb-10 font-bold">Projects</h2>
         {projects.map(
           ({ name, description, skills, url, imgUrl, imgAlt }, index) => (
             <ProjectCard
@@ -42,5 +30,5 @@ export const Projects = () => {
         )}
       </div>
     </>
-  ); 
+  );
 };
