@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useStore } from "../store/store";
 import {
   SiJavascript,
