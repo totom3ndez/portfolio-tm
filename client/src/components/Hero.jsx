@@ -3,7 +3,7 @@ import ContactButton from "./ContactButton";
 import { useStore } from "../store/store";
 
 // ---------------- STYLES ---------------- //
-const st_hero_container = `container lg:items-center lg:justify-items-center lg:grid-cols-3 lg:gap-10 lg:py-30 flex flex-col justify-center items-center text-center px-4 mb-8 z-2`;
+const st_hero_container = `h-[1000px] lg:items-center lg:justify-items-center lg:grid-cols-3 lg:gap-10 lg:py-30 flex flex-col justify-center items-center text-center px-4 mb-8 z-2`;
 
 const st_img = `size-70 shadow-yellow text-dark shadow-lg lg:size-80 mx-auto rounded-full transition-all ease-in`;
 

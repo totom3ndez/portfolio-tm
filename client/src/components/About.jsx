@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useStore } from "../store/store";
 import {
   SiJavascript,
@@ -14,25 +15,31 @@ import {
   SiExpress,
   SiSass,
   SiJquery,
+  SiAstro,
 } from "react-icons/si";
 
 const About = () => {
   const dark = useStore((state) => state.dark);
   const skills = [
-    { name: "JavaScript", icon: <SiJavascript /> },
-    { name: "CSS3", icon: <SiCss3 /> },
-    { name: "HTML5", icon: <SiHtml5 /> },
-    { name: "jQuery", icon: <SiJquery /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-    { name: "Sass", icon: <SiSass /> },
-    { name: "Node.js", icon: <SiNodedotjs /> },
-    { name: "React", icon: <SiReact /> },
-    { name: "GitHub", icon: <SiGithub /> },
-    { name: "npm", icon: <SiNpm /> },
-    { name: "Adobe Illustrator", icon: <SiAdobeillustrator /> },
-    { name: "Adobe Photoshop", icon: <SiAdobephotoshop /> },
-    { name: "Vercel", icon: <SiVercel /> },
-    { name: "Express", icon: <SiExpress /> },
+    { name: "JavaScript", icon: <SiJavascript />, color: "#efd81d" },
+    { name: "CSS3", icon: <SiCss3 />, color: "#0663f4" },
+    { name: "HTML5", icon: <SiHtml5 />, color: "#e96228" },
+    { name: "jQuery", icon: <SiJquery />, color: "#1066a9" },
+    { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#15b8c5" },
+    { name: "Sass", icon: <SiSass />, color: "#c66394" },
+    { name: "Node.js", icon: <SiNodedotjs />, color: "#5c9352" },
+    { name: "React", icon: <SiReact />, color: "#1399c4" },
+    { name: "GitHub", icon: <SiGithub />, color: "882e95" },
+    { name: "npm", icon: <SiNpm />, color: "#cd3e3d" },
+    {
+      name: "Adobe Illustrator",
+      icon: <SiAdobeillustrator />,
+      color: "#ff9d08",
+    },
+    { name: "Adobe Photoshop", icon: <SiAdobephotoshop />, color: "#37abff" },
+    { name: "Vercel", icon: <SiVercel />, color: "#882e95" },
+    { name: "Express", icon: <SiExpress />, color: "#f7e124" },
+    { name: "Astro", icon: <SiAstro />, color: "#df3070" },
   ];
 
   return (
@@ -48,14 +55,18 @@ const About = () => {
         all in for creating smooth, eye-catching online experiences. 🚀 Let's
         make something awesome! 🪄
       </p>
-      <h2 className="text-3xl font-bold text-center mt-10">Skills</h2>
-      <ul className="w-2/3 p-10 flex gap-4 mx-auto flex-wrap justify-center">
-        {skills.map(({ icon }) => (
-          <li className="text-5xl flex gap-4 text-white items-center">
-            {icon}
-          </li>
-        ))}
-      </ul>
+      <div className="items-center skills_container h-[800px] perspective-dramatic">
+        <h2 className="text-3xl font-bold text-center mt-10 w-fit mx-auto">
+          Skills
+        </h2>
+        <ul className="w-fit p-10 grid grid-cols-4 gap-4 grid-rows-4 mx-auto justify-center">
+          {skills.map(({ icon, name }) => (
+            <li key={name} className={`flex gap-4 items-center ${name}`}>
+              {icon}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 };

@@ -388,3 +388,27 @@ form.passed {
   grid-row-start: 2;
   grid-row-end: 5;
 }
+
+.container {
+  perspective: 2000px;
+}
+.grid {
+  margin-top: 5rem;
+  transform: rotateY(5deg);
+  perspective: 1000px;
+  perspective-origin: 0;
+}
+
+.grid li {
+  font-size: 5rem;
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+
+.grid li:hover {
+  transform: translateZ(100px);
+  opacity: 1;
+  box-shadow: 20px 0px 200px 150px #0d1117;
+  background-color: #0d1117;
+  z-index: 1000;
+}
