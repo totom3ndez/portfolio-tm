@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-
-const inputStyle =
-  "p-4 rounded-2xl border-2 border-yellow focus:border-red-500";
+import { inputStyle } from "../styles";
 
 export const ContactForm = () => {
   const form = useRef();

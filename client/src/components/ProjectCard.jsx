@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { st_skills, st_project_card } from "../styles";
 
 const ProjectCard = ({
   index,
@@ -10,10 +11,6 @@ const ProjectCard = ({
   imgAlt,
 }) => {
   const cardRef = useRef(null);
-  //  ---------------- STYLES ---------------- //
-  const st_skills = `p-2 text-zinc-100 rounded-full bg-gradient-to-br cursor-default from-dark to-slate-700 hover:transform hover:scale-105 transition-all ease-in-out duration-300`;
-  const st_project_card = `project_card flex flex-col group relative items-center justify-center w-full h-auto p-10 lg:h-[600px] lg:w-[1300px] bg-center transition-all ease-in-out duration-500 lg:rounded-full lg:hover:w-[150%] gap-4 z-0`;
-  //  ---------------- STYLES ---------------- //
 
   const [isPassed, setIsPassed] = useState(false);
   useEffect(() => {
@@ -75,7 +72,7 @@ const ProjectCard = ({
           </span>
         ))}
       </p>
-      <button className="z-10 lg:hidden mt-6 button_TM_primary">
+      <button className="z-10 lg:hidden mt-6 button_TM_primary rounded-2xl">
         <a href={url} target="blank">
           Visit project
         </a>

@@ -80,24 +80,6 @@ button {
   }
 }
 
-@keyframes floating {
-  10% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.floating {
-  animation: floating 3s ease-in-out infinite forwards;
-}
-
 .waving {
   animation: wave 2.5s ease-in-out infinite;
   transform: rotate(45deg);
@@ -174,23 +156,6 @@ h1 div {
 
 .name_word:nth-child(1) {
   animation-delay: 0.2s;
-}
-
-h1 .bgHover:hover {
-  color: #0f172b;
-}
-
-h1 .bgHover::after {
-  top: 0;
-  content: "";
-  background-color: #fff085;
-  display: block;
-  width: 0;
-  height: 100%;
-  position: absolute;
-  opacity: 1;
-  transition: all 0.4s ease;
-  z-index: -1;
 }
 
 h1 .bgHover:hover::after {
@@ -393,22 +358,12 @@ form.passed {
   perspective: 2000px;
 }
 .grid {
-  margin-top: 5rem;
   transform: rotateY(5deg);
   perspective: 1000px;
   perspective-origin: 0;
 }
 
 .grid li {
-  font-size: 5rem;
   opacity: 1;
-  transition: all 0.4s ease-in-out;
-}
-
-.grid li:hover {
-  transform: translateZ(100px);
-  opacity: 1;
-  box-shadow: 20px 0px 200px 150px #0d1117;
-  background-color: #0d1117;
-  z-index: 1000;
+  transition: all 0.2s ease-in-out;
 }

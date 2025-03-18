@@ -1,71 +1,125 @@
-import { useStore } from "../store/store";
 import {
-  SiJavascript,
-  SiCss3,
-  SiHtml5,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiReact,
-  SiGithub,
-  SiNpm,
-  SiAdobeillustrator,
-  SiAdobephotoshop,
-  SiVercel,
-  SiExpress,
-  SiSass,
-  SiJquery,
-  SiAstro,
-} from "react-icons/si";
+  skills,
+  interest,
+  certificates,
+  boxStyle,
+  subTitleStyle,
+  pillStyle,
+  certificateStyle,
+  flagText,
+} from "../variables";
+import ReactCountryFlag from "react-country-flag";
 
 const About = () => {
-  const dark = useStore((state) => state.dark);
-  const skills = [
-    { name: "JavaScript", icon: <SiJavascript />, color: "#efd81d" },
-    { name: "CSS3", icon: <SiCss3 />, color: "#0663f4" },
-    { name: "HTML5", icon: <SiHtml5 />, color: "#e96228" },
-    { name: "jQuery", icon: <SiJquery />, color: "#1066a9" },
-    { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "#15b8c5" },
-    { name: "Sass", icon: <SiSass />, color: "#c66394" },
-    { name: "Node.js", icon: <SiNodedotjs />, color: "#5c9352" },
-    { name: "React", icon: <SiReact />, color: "#1399c4" },
-    { name: "GitHub", icon: <SiGithub />, color: "882e95" },
-    { name: "npm", icon: <SiNpm />, color: "#cd3e3d" },
-    {
-      name: "Adobe Illustrator",
-      icon: <SiAdobeillustrator />,
-      color: "#ff9d08",
-    },
-    { name: "Adobe Photoshop", icon: <SiAdobephotoshop />, color: "#37abff" },
-    { name: "Vercel", icon: <SiVercel />, color: "#882e95" },
-    { name: "Express", icon: <SiExpress />, color: "#f7e124" },
-    { name: "Astro", icon: <SiAstro />, color: "#df3070" },
-  ];
-
   return (
-    <section id="about">
-      <h2 className="text-3xl font-bold text-center mt-30">About me</h2>
-      <p
-        className={`p-10 lg:text-xl lg:w-1/2 mx-auto ${
-          dark ? "text-white" : "text-dark"
-        }`}
-      >
-        Hey there 👋 I'm a web dev student who loves turning ideas into
-        stunning, user-friendly websites. ✨ Whether it's CSS or JavaScript, I'm
-        all in for creating smooth, eye-catching online experiences. 🚀 Let's
-        make something awesome! 🪄
-      </p>
-      <div className="items-center skills_container h-[800px] perspective-dramatic">
-        <h2 className="text-3xl font-bold text-center mt-10 w-fit mx-auto">
+    <section
+      id="about"
+      className="flex flex-col lg:grid lg:grid-cols-2 lg:w-2/4 gap-4 pt-30"
+    >
+      <h2 className="text-3xl font-bold mb-4 col-span-full text-center">
+        Know me
+      </h2>
+      <article className={`col-start-1 h-full ${boxStyle}`}>
+        <h3 className={subTitleStyle}>Interests</h3>
+        <div className="flex flex-wrap gap-2 w-full h-full z-5 justify-center lg:justify-start">
+          {interest.map((item, index) => (
+            <span key={index} className={pillStyle}>
+              {item}
+            </span>
+          ))}
+        </div>
+      </article>
+      <article className={`overflow-hidden ${boxStyle} w-1/3`}>
+        <h3 className="text-center lg:text-left text-xl mb-4 font-bold">
           Skills
-        </h2>
-        <ul className="w-fit p-10 grid grid-cols-4 gap-4 grid-rows-4 mx-auto justify-center">
+        </h3>
+        <ul className="relative flex flex-wrap gap-6 justify-center">
           {skills.map(({ icon, name }) => (
-            <li key={name} className={`flex gap-4 items-center ${name}`}>
-              {icon}
+            <li
+              key={name}
+              className="relative flex flex-col items-center group text-4xl"
+            >
+              <div className="flex gap-4 items-center hover:text-white transition ease-in-out">
+                {icon}
+              </div>
+              <span className="z-100 absolute transform -top-12 mt-2 px-2 py-1 bg-yellow text-dark text-sm rounded opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+                {name}
+              </span>
             </li>
           ))}
         </ul>
-      </div>
+      </article>
+      <article className={boxStyle}>
+        <h3 className={subTitleStyle}>Certificates</h3>
+        <ul
+          id="certificates"
+          className="flex gap-4 flex-wrap justify-center lg:justify-start"
+        >
+          {certificates.map(({ name, imgAlt, imgUrl, credential }) => (
+            <a href={credential} target="blank">
+              <div className={certificateStyle}>
+                <img
+                  width={50}
+                  src={imgUrl}
+                  alt={imgAlt}
+                  className="rounded-full"
+                />
+                {name}
+              </div>
+            </a>
+          ))}
+        </ul>
+      </article>
+      <article className={`col-start-2 h-full ${boxStyle}`}>
+        <h3 className={subTitleStyle}>Languages</h3>
+        <ul className="flex lg:flex-col gap-8 justify-center">
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="ES"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="ES"
+            />
+            <span className={flagText}>
+              Spanish <i className="opacity-40">Native</i>
+            </span>
+          </li>
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="US"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="US"
+            />
+            <span className={flagText}>
+              English <i className="opacity-40">Fluent</i>
+            </span>
+          </li>
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="IT"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="IT"
+            />
+            <span className={flagText}>
+              Italian <i className="opacity-40">Advanced</i>
+            </span>
+          </li>
+        </ul>
+      </article>
     </section>
   );
 };
