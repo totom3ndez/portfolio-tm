@@ -29,11 +29,61 @@ const About = () => {
           ))}
         </div>
       </article>
+      <article className={`col-start-2 h-full ${boxStyle}`}>
+        <h3 className={subTitleStyle}>Languages</h3>
+        <ul className="flex lg:flex-col gap-8 justify-center">
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="ES"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="ES"
+            />
+            <span className={flagText}>
+              Spanish <i className="opacity-70">Native</i>
+            </span>
+          </li>
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="US"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="US"
+            />
+            <span className={flagText}>
+              English <i className="opacity-70">Fluent</i>
+            </span>
+          </li>
+          <li className="flex gap-4 items-center">
+            <ReactCountryFlag
+              countryCode="IT"
+              svg
+              style={{
+                width: "2em",
+                height: "2em",
+                borderRadius: "10px",
+              }}
+              title="IT"
+            />
+            <span className={flagText}>
+              Italian <i className="opacity-70">Advanced</i>
+            </span>
+          </li>
+        </ul>
+      </article>
       <article className={`overflow-hidden ${boxStyle} w-1/3`}>
         <h3 className="text-center lg:text-left text-xl mb-4 font-bold">
           Skills
         </h3>
-        <ul className="relative flex flex-wrap gap-6 justify-center">
+        <ul className="flex gap-8 flex-wrap justify-center lg:justify-start">
           {skills.map(({ icon, name }) => (
             <li
               key={name}
@@ -53,71 +103,23 @@ const About = () => {
         <h3 className={subTitleStyle}>Certificates</h3>
         <ul
           id="certificates"
-          className="flex gap-4 flex-wrap justify-center lg:justify-start"
+          className="flex gap-2 flex-wrap justify-center lg:justify-start"
         >
           {certificates.map(({ name, imgAlt, imgUrl, credential }, index) => (
-            <a href={credential} target="blank" key={index}>
-              <div className={certificateStyle}>
-                <img
-                  width={50}
-                  src={imgUrl}
+            <li key={index}>
+              <a href={credential} target="blank">
+                <div className={certificateStyle}>
+                  <img
+                    width={50}
+                    src={imgUrl}
                   alt={imgAlt}
                   className="rounded-full"
                 />
                 {name}
               </div>
             </a>
+            </li>
           ))}
-        </ul>
-      </article>
-      <article className={`col-start-2 h-full ${boxStyle}`}>
-        <h3 className={subTitleStyle}>Languages</h3>
-        <ul className="flex lg:flex-col gap-8 justify-center">
-          <li className="flex gap-4 items-center">
-            <ReactCountryFlag
-              countryCode="ES"
-              svg
-              style={{
-                width: "2em",
-                height: "2em",
-                borderRadius: "10px",
-              }}
-              title="ES"
-            />
-            <span className={flagText}>
-              Spanish <i className="opacity-40">Native</i>
-            </span>
-          </li>
-          <li className="flex gap-4 items-center">
-            <ReactCountryFlag
-              countryCode="US"
-              svg
-              style={{
-                width: "2em",
-                height: "2em",
-                borderRadius: "10px",
-              }}
-              title="US"
-            />
-            <span className={flagText}>
-              English <i className="opacity-40">Fluent</i>
-            </span>
-          </li>
-          <li className="flex gap-4 items-center">
-            <ReactCountryFlag
-              countryCode="IT"
-              svg
-              style={{
-                width: "2em",
-                height: "2em",
-                borderRadius: "10px",
-              }}
-              title="IT"
-            />
-            <span className={flagText}>
-              Italian <i className="opacity-40">Advanced</i>
-            </span>
-          </li>
         </ul>
       </article>
     </section>

@@ -3,10 +3,6 @@ import ContactButton from "./ContactButton";
 import { useStore } from "@/store/store";
 import { st_hero_container, st_img, st_role, st_title } from "@/styles";
 
-// ---------------- STYLES ---------------- //
-
-// ---------------- STYLES ---------------- //
-
 export const Hero = () => {
   const dark = useStore((state) => state.dark);
   return (

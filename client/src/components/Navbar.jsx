@@ -54,26 +54,32 @@ export const Navbar = () => {
               {isMobile ? <GoHome className="size-6" /> : "Home"}
             </a>
           </li>
-          <span>|</span>
+          <li>
+            <span>|</span>
+          </li>
           <li className={st_link}>
             <a href="#about">
               {isMobile ? <GoPerson className="size-6" /> : "About"}
             </a>
           </li>
-          <span>|</span>
+          <li>
+            <span>|</span>
+          </li>
           <li className={st_link}>
             <a href="#projects">
               {isMobile ? <GoStack className="size-6" /> : "Projects"}
             </a>
           </li>
-          <span>|</span>
+          <li>
+            <span>|</span>
+          </li>
           <li className={st_link}>
             <a href="#contact">
               {isMobile ? <GoMail className="size-6" /> : "Contact"}
             </a>
           </li>
         </ul>
-        <button className={st_button} onClick={handleTheme}>
+        <button aria-label="Toggle theme" className={st_button} onClick={handleTheme}>
           {dark ? <LuSun /> : <LuMoonStar />}
         </button>
       </nav>

@@ -50,7 +50,7 @@ export const ContactForm = () => {
       className="flex flex-col w-full lg:w-1/3 mx-2 mb-15 gap-6 p-10"
     >
       <div className="flex flex-col">
-        <label>Name</label>
+        <label htmlFor="user_name">Name</label>
         <input
           type="text"
           name="user_name"
@@ -61,7 +61,7 @@ export const ContactForm = () => {
         />
       </div>
       <div className="flex flex-col">
-        <label>Email</label>
+        <label htmlFor="user_email">Email</label>
         <input
           type="email"
           name="user_email"
@@ -72,7 +72,7 @@ export const ContactForm = () => {
         />
       </div>
       <div className="flex flex-col gap-2">
-        <label>Message</label>
+        <label htmlFor="message">Message</label>
         <textarea
           name="message"
           value={message}
