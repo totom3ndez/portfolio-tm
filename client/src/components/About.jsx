@@ -7,16 +7,16 @@ import {
   pillStyle,
   certificateStyle,
   flagText,
-} from "../variables";
+} from "@/variables";
 import ReactCountryFlag from "react-country-flag";
 
 const About = () => {
   return (
     <section
       id="about"
-      className="flex flex-col lg:grid lg:grid-cols-2 lg:w-2/4 gap-4 pt-30"
+      className="flex flex-col lg:grid lg:grid-cols-2 lg:w-1/2 2xl:max-w-4xl gap-4 pt-30"
     >
-      <h2 className="text-3xl font-bold mb-4 col-span-full text-center">
+      <h2 className="text-3xl font-bold mb-10 col-span-full text-center">
         Know me
       </h2>
       <article className={`col-start-1 h-full ${boxStyle}`}>
@@ -55,8 +55,8 @@ const About = () => {
           id="certificates"
           className="flex gap-4 flex-wrap justify-center lg:justify-start"
         >
-          {certificates.map(({ name, imgAlt, imgUrl, credential }) => (
-            <a href={credential} target="blank">
+          {certificates.map(({ name, imgAlt, imgUrl, credential }, index) => (
+            <a href={credential} target="blank" key={index}>
               <div className={certificateStyle}>
                 <img
                   width={50}

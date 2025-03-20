@@ -1,7 +1,7 @@
 import React from "react";
 import ContactButton from "./ContactButton";
-import { useStore } from "../store/store";
-import { st_hero_container, st_img, st_role, st_title } from "../styles";
+import { useStore } from "@/store/store";
+import { st_hero_container, st_img, st_role, st_title } from "@/styles";
 
 // ---------------- STYLES ---------------- //
 

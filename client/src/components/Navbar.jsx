@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { LuMoonStar, LuSun } from "react-icons/lu";
-import { useStore } from "../store/store";
+import { useStore } from "@/store/store";
 import { GoHome, GoMail, GoPerson, GoStack } from "react-icons/go";
 
 export const Navbar = () => {

@@ -1,5 +1,5 @@
-import { useStore } from "../store/store";
-import { projects } from "../data/projects";
+import { useStore } from "@/store/store";
+import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
 const st_project_container = `mx-auto py-30 h-auto w-full flex flex-col gap-20 items-center overflow-hidden text-zinc-100 project_container`;
@@ -20,7 +20,7 @@ export const Projects = () => {
             dark ? "text-zinc-100" : "text-dark"
           }`}
         >
-          Projects
+          Apps I made
         </h2>
         {projects.map(
           ({ name, description, skills, url, imgUrl, imgAlt }, index) => (

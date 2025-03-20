@@ -5,6 +5,11 @@
   --color-yellow: #fff085;
 }
 
+@font-face {
+  font-family: f;
+  src: url();
+}
+
 #root {
   height: 100vh;
   font-family: "Parkinsans", sans-serif;

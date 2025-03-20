@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { st_skills, st_project_card } from "../styles";
+import { st_skills, st_project_card } from "@/styles";
 
 const ProjectCard = ({
   index,

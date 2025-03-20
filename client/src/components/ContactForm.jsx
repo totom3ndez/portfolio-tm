@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { inputStyle } from "../styles";
+import { inputStyle, submitStyle } from "@/styles";
+import { useStore } from "../store/store";
 
 export const ContactForm = () => {
+  const dark = useStore((state) => state.dark);
   const form = useRef();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -54,7 +56,7 @@ export const ContactForm = () => {
           name="user_name"
           value={name}
           onChange={handleNameChange}
-          className={inputStyle}
+          className={`${inputStyle} ${dark ? "border-yellow" : "border-dark"}`}
           required
         />
       </div>
@@ -65,7 +67,7 @@ export const ContactForm = () => {
           name="user_email"
           value={email}
           onChange={handleEmailChange}
-          className={inputStyle}
+          className={`${inputStyle} ${dark ? "border-yellow" : "border-dark"}`}
           required
         />
       </div>
@@ -77,13 +79,15 @@ export const ContactForm = () => {
           rows={5}
           onChange={handleMessageChange}
           required
-          className="border-2 border-yellow p-4 resize-none rounded-2xl"
+          className={`border-2 p-4 resize-none rounded-2xl ${
+            dark ? "border-yellow" : "border-dark"
+          }`}
         />
       </div>
       <input
         type="submit"
         value="Contact me!"
-        className=" p-4 border-2 border-yellow row-start-3 col-span-2 rounded-2xl hover:bg-yellow hover:text-black cursor-pointer transition-colors ease-in-out duration-500"
+        className={`${submitStyle} ${dark ? "border-yellow" : "border-dark"}`}
       />
       <div className="relative w-full h-fit">
         {submited && (
