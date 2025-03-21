@@ -7,7 +7,7 @@ import {
   pillStyle,
   certificateStyle,
   flagText,
-} from "@/variables";
+} from "@/consts";
 import ReactCountryFlag from "react-country-flag";
 
 const About = () => {
