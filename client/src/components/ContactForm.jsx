@@ -53,6 +53,7 @@ export const ContactForm = () => {
         <label htmlFor="user_name">Name</label>
         <input
           type="text"
+          id="user_name"
           name="user_name"
           value={name}
           onChange={handleNameChange}
@@ -65,6 +66,7 @@ export const ContactForm = () => {
         <input
           type="email"
           name="user_email"
+          id="user_email"
           value={email}
           onChange={handleEmailChange}
           className={`${inputStyle} ${dark ? "border-yellow" : "border-dark"}`}
@@ -75,6 +77,7 @@ export const ContactForm = () => {
         <label htmlFor="message">Message</label>
         <textarea
           name="message"
+          id="message"
           value={message}
           rows={5}
           onChange={handleMessageChange}
