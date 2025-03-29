@@ -14,7 +14,7 @@ Welcome to my personal portfolio website! This is a showcase of my skills, proje
 
 This portfolio was built with:
 
-- **Astro.js**: A fast and modern framework for building static websites.
+- **React**: A powerful JavaScript library for building user interfaces.
 - **TailwindCSS**: A utility-first CSS framework for responsive and clean design.
 - **Vercel**: For seamless deployment and hosting.
 
