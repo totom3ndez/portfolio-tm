@@ -12,13 +12,13 @@ import ReactCountryFlag from "react-country-flag";
 
 const About = () => {
   return (
-    <section
-      id="about"
-      className="flex flex-col lg:grid lg:grid-cols-2 lg:w-1/2 2xl:max-w-4xl gap-4 pt-30"
-    >
-      <h2 className="text-3xl font-bold mb-10 col-span-full text-center">
+      <>
+      <h2 id="about" className="text-3xl font-bold mt-50 col-span-full text-center">
         Know me
       </h2>
+    <section
+      className="flex flex-col lg:grid lg:grid-cols-[repeat(auto-fit, minmax(250px, 1fr))] lg:w-1/2 2xl:max-w-7xl gap-4 pt-20"
+      >
       <article className={`col-start-1 h-full ${boxStyle}`}>
         <h3 className={subTitleStyle}>Interests</h3>
         <div className="flex flex-wrap gap-2 w-full h-full z-5 justify-center lg:justify-start">
@@ -42,7 +42,7 @@ const About = () => {
                 borderRadius: "10px",
               }}
               title="ES"
-            />
+              />
             <span className={flagText}>
               Spanish <i className="opacity-70">Native</i>
             </span>
@@ -57,7 +57,7 @@ const About = () => {
                 borderRadius: "10px",
               }}
               title="US"
-            />
+              />
             <span className={flagText}>
               English <i className="opacity-70">Fluent</i>
             </span>
@@ -72,7 +72,7 @@ const About = () => {
                 borderRadius: "10px",
               }}
               title="IT"
-            />
+              />
             <span className={flagText}>
               Italian <i className="opacity-70">Advanced</i>
             </span>
@@ -83,11 +83,11 @@ const About = () => {
         <h3 className="text-center lg:text-left text-xl mb-4 font-bold">
           Skills
         </h3>
-        <ul className="flex gap-8 flex-wrap justify-center lg:justify-start">
+        <ul className=" flex gap-8 flex-wrap justify-center lg:justify-start p-6">
           {skills.map(({ icon, name }) => (
             <li
-              key={name}
-              className="relative flex flex-col items-center group text-4xl"
+            key={name}
+            className="relative flex flex-col items-center group text-4xl"
             >
               <div className="flex gap-4 items-center hover:text-white transition ease-in-out">
                 {icon}
@@ -99,12 +99,12 @@ const About = () => {
           ))}
         </ul>
       </article>
-      <article className={boxStyle}>
+      <article className={`col-start-2 h-full ${boxStyle}`}>
         <h3 className={subTitleStyle}>Certificates</h3>
         <ul
           id="certificates"
           className="flex gap-2 flex-wrap justify-center lg:justify-start"
-        >
+          >
           {certificates.map(({ name, imgAlt, imgUrl, credential }, index) => (
             <li key={index}>
               <a href={credential} target="blank">
@@ -112,9 +112,9 @@ const About = () => {
                   <img
                     width={50}
                     src={imgUrl}
-                  alt={imgAlt}
-                  className="rounded-full"
-                />
+                    alt={imgAlt}
+                    className="rounded-full"
+                    />
                 {name}
               </div>
             </a>
@@ -123,6 +123,7 @@ const About = () => {
         </ul>
       </article>
     </section>
+          </>
   );
 };
 

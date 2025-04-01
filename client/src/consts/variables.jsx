@@ -49,6 +49,14 @@ export const interest = [
 
 export const certificates = [
   {
+    name: "React Advanced",
+    imgUrl:
+      "https://media.licdn.com/dms/image/v2/C4E0BAQFdNatYGiBelg/company-logo_100_100/company-logo_100_100/0/1636138754252/facebook_logo?e=1747872000&v=beta&t=lxxe8tHe6uCWBQ6NmF_oZx9Q08B2x4ZTt5jIyYCmU8k",
+    imgAlt: "Meta logo",
+    credential:
+      "https://www.coursera.org/account/accomplishments/verify/7W5BRFGAFGXO",
+  },
+  {
     name: "React Basics",
     imgUrl:
       "https://media.licdn.com/dms/image/v2/C4E0BAQFdNatYGiBelg/company-logo_100_100/company-logo_100_100/0/1636138754252/facebook_logo?e=1747872000&v=beta&t=lxxe8tHe6uCWBQ6NmF_oZx9Q08B2x4ZTt5jIyYCmU8k",
